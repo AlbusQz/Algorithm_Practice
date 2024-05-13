@@ -44,6 +44,7 @@ class Solution(object):
             second_node = ListNode(0)
         if last_node.next and last_node.next.val==0:
             last_node.next = None
+            # del first_node,second_node
         return head
             
                 
