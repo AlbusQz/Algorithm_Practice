@@ -23,8 +23,7 @@ class Solution:
                 for j in range(n):
                     result = tens[i] + result
             elif n == 4:
-                result = fives[i] + result
-                result = tens[i] + result  
+                result = tens[i] + fives[i] + result 
             elif n == 5:
                 result = fives[i] + result
             elif n > 5 and n < 9:
