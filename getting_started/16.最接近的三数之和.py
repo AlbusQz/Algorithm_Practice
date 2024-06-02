@@ -21,6 +21,27 @@ class Solution:
                 continue
             j = i + 1
             k = n - 1
+            
+            ## better method  by 灵茶山艾府
+            ## https://leetcode.cn/problems/3sum-closest/solutions/2337801/ji-zhi-you-hua-ji-yu-san-shu-zhi-he-de-z-qgqi/
+
+            x = nums[i]
+            #优化一
+            temp = x+nums[i+1]+nums[i+2]
+            if temp > target:
+                if abs(temp-target)<min_:
+                   return temp
+            
+            #优化二
+            
+            temp = x+nums[-1]+nums[-2]
+            if temp < target:
+                if abs(temp-target)<min_:
+                    min_ = abs(temp-target)
+                    result = temp
+                continue
+            ## ending method
+            
             while j<k:
                 temp = nums[i] + nums[j] + nums[k]
                 if temp == target:
