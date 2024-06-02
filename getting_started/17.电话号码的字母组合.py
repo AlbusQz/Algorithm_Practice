@@ -7,17 +7,6 @@
 # @lc code=start
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
-        # num_of_letter = [3,3,3,3,3,4,3,4]
-        # num_of_letter = {
-        #     '2':3,
-        #     '3':3,
-        #     '4':3,
-        #     '5':3,
-        #     '6':3,
-        #     '7':4,
-        #     '8':3,
-        #     '9':4,
-        # }
         num_to_letters = {
             '2':['a','b','c'],
             '3':['d','e','f'],
@@ -41,22 +30,6 @@ class Solution:
                     temp_result.append(r+l)
             result = temp_result
             i += 1
-        return result
-        # length = 1
-        # lengths = []
-        
-        # for s in digits:
-        #     lengths.append(length)
-        #     length = length * num_of_letter[s]
-            
-        
-        # result = ['' for i in range(length)]
-        # # i = 0
-        # for i,s in enumerate(digits):
-        #     length
-        #     for j in num_to_letters[s]:
-                
-                
-            
+        return result          
 # @lc code=end
 
