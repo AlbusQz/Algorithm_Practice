@@ -12,60 +12,30 @@ from typing import *
 # @lc code=start
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
-        if p=='.*':
-            return True
-        i = 0
-        j = 0
-        j_ = 0
-        m = len(s)
-        n = len(p)
-        while i < m and j < n:
-            if j+1<n and p[j+1] == '*':
-                count = 0
-                t = p[j]
-                while j<n and (p[j] == '*'or p[j] == t):
-                    if p[j] == t:
-                        count += 1
+        #参考了这篇文章：https://blog.csdn.net/weixin_51332434/article/details/120913923
+        m = len(s)+1
+        n = len(p)+1
+        dp = [[False for i in range(n)] for j in range(m)]
+        dp[0][0] = True
+        # dp[1:][0] = False
+        for i in range(2,n):
+            if p[i-1] == '*':
+                dp[0][i] = dp[0][i-2]
+        
+        for i in range(1,m):
+            a = i - 1
+            for j in range(1,n):
+                b = j - 1
+                if p[b] == '*':
+                    if p[b-1] == s[a] or p[b-1] == '.':
+                        dp[i][j] = dp[i-1][j] or dp[i][j-2]
                     else:
-                        # p[j] = t
-                        if j+1 <n:
-                            p = p[:j]+t+p[j+1:]
-                        else:
-                            p = p[:j]+t
-                    j += 1
-                while i<m and (s[i] == t):
-                    i += 1
-                    count -=1
-
-            elif s[i] != p[j] and p[j] <= 'z' and p[j] >= 'a':
-                return False
-            elif s[i] == p[j]:
-                i += 1
-                j += 1
-                j_ = j
-            elif p[j]=='.':
-                # if j+1 <n:
-                #     p = p[:j-1]+s[i]+p[j+1:]
-                # else:
-                #     p = p[:j-1]+s[i]
-                # # p[j] = s[i]
-                i += 1
-                j += 1
-                j_ = j
-            elif p[j] =='*':
-                count = 0
-                t = p[j-1]
-                j += 1
-                
-                while i<m and (s[i] == t):
-                    i += 1
-             
-        
-        if j<n or i<m :
-            return False
-        else :
-            return True
-                 
-        
+                        dp[i][j] = dp[i][j-2]
+                elif p[b] == '.' or p[b] == s[a]:
+                    dp[i][j] = dp[i-1][j-1]
+                else:
+                    dp[i][j] = False
+        # print(dp)
+        return dp[m-1][n-1]      
 # @lc code=end
 

@@ -33,10 +33,12 @@ class Solution:
                         result.append(temps)
                     right.append(r+1)
                     left.append(l)
-                    
-            strings = strings[m:]
-            left = left[m:]
-            right = right[m:]
+            
+            del(strings[0:m])        
+            del(left[0:m])
+            del(right[0:m])
+            # left = left[m:]
+            # right = right[m:]
                    
         return result
 # @lc code=end
