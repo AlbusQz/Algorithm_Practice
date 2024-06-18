@@ -50,7 +50,7 @@ class Solution(object):
         
         if not flag:
             mid = -1
-        print(mid)
+        # print(mid)
         if mid >= 0:
             right = nums[mid]
             left = nums[mid+1]
@@ -81,6 +81,9 @@ class Solution(object):
             i = 0
             j = n-1
         ## 2.find the target
+        
+        
+
         
         while i<=j:
             mid = int((i+j)/2)
