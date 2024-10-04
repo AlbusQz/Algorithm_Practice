@@ -8,7 +8,20 @@
 class Solution:
     def trap(self, height: List[int]) -> int: 
         
+        ## 单调栈匹配法，通过类似括号匹配的思路进行解决
+        stack = []
+        n = len(height)
+        
+        stack.append(height[0])
+        l = 0
+        r = 0
+        top = 0
+        
+        for i in range(n):
+            
+        
         ## 双指针法,优化掉了原来需要的存储空间
+        '''
         result = 0
         n = len(height)
         left = 0
@@ -30,7 +43,7 @@ class Solution:
                 result += rightmax - height[right]
                 right -= 1
         return result
-        
+        '''
         
         
         
