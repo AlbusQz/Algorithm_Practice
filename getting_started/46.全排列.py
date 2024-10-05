@@ -7,6 +7,40 @@
 # @lc code=start
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
+        
+        #递归回溯法，注意copy的使用
+        '''
+        def dfs(depth,n,nums,used,path):
+            
+            if depth == n:
+                print(path)
+                result.append(copy.copy(path))                
+                # return path
+            
+            for i in range(n):
+                if used[i] == False:
+                    path.append(nums[i])
+                    used[i] = True
+                    dfs(depth+1,n,nums,used,path)
+                    # print(result)
+                    used[i] = False
+                    path.pop()
+            
+            return
+            
+        n = len(nums)
+        
+        path = []
+        used = [False for _ in range(n)]
+        result = []
+        dfs(0,n,nums,used,path) 
+
+        return result
+        '''
+        
+        
+        #暴力存储法
+        '''
         result = []
         n = len(nums)
         
@@ -35,7 +69,7 @@ class Solution:
             list_a = a_temp
             list_b = b_temp
         return list_a                    
-        
+        '''
         
         
 # @lc code=end
