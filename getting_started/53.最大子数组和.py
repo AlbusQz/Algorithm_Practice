@@ -7,7 +7,6 @@
 # @lc code=start
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        # max = -1*10000
         maxSum = []
         n = len(nums)
         maxSum.append(nums[0])
