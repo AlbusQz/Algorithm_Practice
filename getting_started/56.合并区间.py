@@ -11,10 +11,15 @@ class Solution:
         ## 暴力法，应该会超时
         n = 0
         result = []
-        ## 乘二的目的是为了区分连续，即偶数下标为start/end，奇数用于区分两个点之间是否连续
-        board = [False for _ in range(20002)]
+        
         for i in intervals:
             n = max(i[1],n)
+        n = n*2
+        board = [False for _ in range(n+2)]
+        
+        ## 乘二的目的是为了区分连续，即偶数下标为start/end，奇数用于区分两个点之间是否连续
+        for i in intervals:
+            # n = max(i[1],n)
             if i[0] == i[1]:
                 board[i[0]*2] = True 
             for j in range(i[0]*2,i[1]*2):
@@ -22,8 +27,7 @@ class Solution:
         
         left = 0
         right = 0
-        n = 2 * n
-        print(board[:n])
+
         while left <= n and right <= n:
             if board[left] == True:
                 right = left + 1
