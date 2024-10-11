@@ -11,7 +11,7 @@ class Solution:
         ## 暴力法，应该会超时
         n = 0
         result = []
-        
+        ## 乘二的目的是为了区分连续，即偶数下标为start/end，奇数用于区分两个点之间是否连续
         board = [False for _ in range(20002)]
         for i in intervals:
             n = max(i[1],n)
