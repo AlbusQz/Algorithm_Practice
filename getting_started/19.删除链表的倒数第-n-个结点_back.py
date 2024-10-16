@@ -1,3 +1,8 @@
+# @before-stub-for-debug-begin
+from python3problem19 import *
+from typing import *
+# @before-stub-for-debug-end
+
 #
 # @lc app=leetcode.cn id=19 lang=python3
 #
@@ -12,25 +17,22 @@
 #         self.next = next
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        
         i = 0
-        pointer = head
-        remove_pointer = head
-        
-        while i < n :
-            remove_pointer = remove_pointer.next
+        former = head
+        now = head
+        while i < n:
+            now = now.next
             i += 1
-        if remove_pointer is None:
+        if now is None:
             return head.next
-        
-        while remove_pointer.next is not None:
-            remove_pointer = remove_pointer.next
-            pointer = pointer.next
-        
-        pointer.next = pointer.next.next
+        else:
+            while now.next is not None:
+                now = now.next
+                i += 1
+                former = former.next
+            former.next = former.next.next
         return head
-        
-        
+            
             
 # @lc code=end
 
