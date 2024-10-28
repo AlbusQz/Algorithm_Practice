@@ -8,6 +8,26 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         
+        #迭代法
+        result = [[]]
+       
+        n = len(nums)
+        stack = [[i] for i in nums]
+        index = [i for i in range(n)]
+        
+        while len(stack)>0:
+            temp = stack.pop()                                
+            result.append(copy.copy(temp))
+            temp_index = index.pop()
+            for i in range(temp_index+1,n):
+                temp_2 = copy.copy(temp)
+                temp_2.append(nums[i])
+                stack.append(temp_2)
+                index.append(i)
+        
+        return result
+        #递归法
+        '''
         result = [[]]
         n = len(nums)
         visited = [False for _ in range(n)]
@@ -29,6 +49,7 @@ class Solution:
         for i in range(n):
             dfs(i)
         return result
+        '''
         
 # @lc code=end
 
