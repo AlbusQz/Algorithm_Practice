@@ -13,7 +13,49 @@
 #         self.right = right
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        
+        ## 中左右和中右左对比法
+        first_root = []
+        last_root = []
+        def fr(root):
+            if root is None:
+                return
+            first_root.append(root.val)
+            if root.left is not None:
+                fr(root.left)
+            else:
+                first_root.append(101)
+            if root.right is not None:
+                fr(root.right)
+            else:
+                first_root.append(101)
+        
+        def lr(root):
+            if root is None:
+                return
+            last_root.append(root.val)
+            if root.right is not None:
+                lr(root.right)
+            else:
+                last_root.append(101)
+            if root.left is not None:
+                lr(root.left)
+            else:
+                last_root.append(101)
+            
+            
+        
+        fr(root)
+        lr(root)
+        print(first_root)
+        print(last_root)
+        n = len(first_root)
+        for i in range(n):
+            if first_root[i] != last_root[i]:
+                return False
+        return True
         ## 遍历法
+        '''
         if root is None:
                 return True
         def dfs(left,right):
@@ -29,7 +71,7 @@ class Solution:
             return dfs(left.left,right.right) and dfs(left.right,right.left)
         
         return dfs(root.left,root.right)
-        
+        '''
         ## 直接使用中根遍历会出现null和None分不清的情况
         '''
         nodes = []
